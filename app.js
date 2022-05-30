@@ -15,7 +15,7 @@ class App {
         window.addEventListener('resize', this.resize.bind(this), false) //resize 이벤트 리스너를 통해 가변적인 브라우저 환경에서도 동작할수 있게한다.
         this.resize()
 
-        this.ball = new Ball(this.stageWidth, this.stageHeight,60,15)//(창 너비, 창 높이, 반지름, 속도)
+        this.ball = new Ball(this.stageWidth, this.stageHeight,60,5)//(창 너비, 창 높이, 반지름, 속도)
         this.block = new Block(700,30,300,450)
         window.requestAnimationFrame(this.animate.bind(this)) 
     }
@@ -23,14 +23,13 @@ class App {
     resize() { 
         this.stageWidth = document.body.clientWidth
         this.stageHeight = document.body.clientHeight
-
         this.canvas.width = this.stageWidth * 2
         this.canvas.height = this.stageHeight * 2
         this.ctx.scale(2, 2) 
         //레티나 디스플레이에서도 선명한 표현을 위해 캔버스를 두배로 키움
     }
 
-    animate(t){
+    animate(){
         window.requestAnimationFrame(this.animate.bind(this))
         this.ctx.clearRect(0,0,this.stageWidth,this.stageHeight)
         this.block.draw(this.ctx)
